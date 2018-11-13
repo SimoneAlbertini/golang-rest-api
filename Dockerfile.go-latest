@@ -1,0 +1,13 @@
+#
+# This actually builds a very big image because it includes a whole debian dist and golang compiler and libraries :(
+#
+
+FROM golang:latest
+RUN mkdir /app
+# ADD ca-certificates.crt /etc/ssl/certs/ # if SSL certificates are needed
+ADD . /app
+WORKDIR /app
+RUN go get -d -v github.com/gorilla/mux
+RUN go install -v github.com/gorilla/mux
+RUN go build -o main .
+CMD ["/app/main"]

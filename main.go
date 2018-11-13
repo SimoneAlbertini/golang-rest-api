@@ -28,16 +28,16 @@ func main() {
 	people = append(people, Person{ID: "2", Firstname: "Koko", Lastname: "Doe", Address: &Address{City: "City Z", State: "State Y"}})
 	people = append(people, Person{ID: "3", Firstname: "Francis", Lastname: "Sunday"})
 
-	port := ":8001"
+	port := ":8000"
 
-	fmt.Printf("I started (localhost%s)\n", port)
+	fmt.Print("I started",)
+
 	router := mux.NewRouter()
 	router.HandleFunc("/people", GetPeople).Methods("GET")
 	router.HandleFunc("/people/{id}", GetPerson).Methods("GET")
 	router.HandleFunc("/people/{id}", CreatePerson).Methods("POST")
 	router.HandleFunc("/people/{id}", DeletePerson).Methods("DELETE")
 	log.Fatal(http.ListenAndServe(port, router))
-	fmt.Println("Bye")
 }
 
 func DeletePerson(w http.ResponseWriter, r *http.Request) {
