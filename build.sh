@@ -1,6 +1,12 @@
 #!/bin/bash
 
 #
+# Install dependencies
+#
+
+# go get github.com/gorilla/mux
+
+#
 # Statically compiling Go application: disabling CGO and forcing to rebuild all dependencies with CGO disabled
 #
 
